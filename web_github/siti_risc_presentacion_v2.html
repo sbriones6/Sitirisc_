@@ -1,0 +1,206 @@
+<<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITI-RISC - Sistema de Transferencia de Información de Riesgos Socionaturales</title>
+  <link rel="icon" href="/imagenes/favicon.ico" type="image/x-icon">
+  <style>
+    :root {
+      --color-primary: #0057a8;
+      --color-secondary: #007bff;
+      --color-dark: #002d5e;
+      --color-bg: #f0f4f8;
+      --radius: 0.5rem;
+      --spacing: 1rem;
+      --font-base: 'Segoe UI', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-base);
+      background-color: var(--color-bg);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+    .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(270deg, #f0f4f8, var(--color-primary), var(--color-secondary), #f0f4f8);
+      background-size: 600% 600%;
+      z-index: -1;
+      animation: GradientAnimation 30s ease infinite;
+    }
+    @keyframes GradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    header {
+      background-color: rgba(0, 87, 168, 0.85);
+      color: #fff;
+      padding: var(--spacing);
+      backdrop-filter: blur(8px);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-title { flex: 1; text-align: center; font-size: 1.25rem; }
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: var(--spacing) auto;
+      padding: 0 var(--spacing);
+    }
+    .info-box, .panel, .services-panel {
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius);
+      background-color: #fff;
+      padding: var(--spacing);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: var(--spacing);
+    }
+    .info-box h2, .panel h3, .services-panel h3 {
+      color: var(--color-primary);
+      margin: 0 0 var(--spacing) 0;
+      text-align: center;
+    }
+    .panels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing);
+      margin-bottom: var(--spacing);
+    }
+    .panel, .services-panel { text-align: center; }
+    .panel img, .glossary-item img { width: 50px; height: 50px; margin-bottom: 0.5rem; }
+    .panel p { font-size: 0.9rem; }
+    .btn { display: inline-block; background-color: var(--color-secondary); color: #fff; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: var(--radius); transition: background-color 0.3s ease; }
+    .btn:hover, .btn:focus { background-color: var(--color-primary); }
+    .services-panel { background-color: var(--color-secondary); color: #fff; }
+    .services-panel .btn { background-color: #fff; color: var(--color-secondary); margin: 0 var(--spacing); }
+    .services-panel .btn:hover, .services-panel .btn:focus { background-color: #f0f0f0; }
+    footer {
+      background-color: var(--color-dark);
+      color: #fff;
+      text-align: center;
+      padding: var(--spacing);
+      font-size: 0.875rem;
+    }
+    .glossary-sidebar {
+      position: fixed;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 1000;
+    }
+    .glossary-item {
+      position: relative;
+      border: 2px dashed var(--color-secondary);
+      border-radius: var(--radius);
+      padding: 0.5rem;
+      background-color: #fff;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .tooltip {
+      position: absolute;
+      top: 50%;
+      right: 3.5rem;
+      transform: translateY(-50%);
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-primary);
+      border-radius: var(--radius);
+      padding: 0.75rem;
+      width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: none;
+    }
+    .tooltip.visible { display: block; }
+    @media (max-width: 768px) {
+      .panels { grid-template-columns: 1fr; }
+      .glossary-sidebar { right: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-animation"></div>
+  <header>
+    <div class="header-container">
+      <img src="imagenes/siti-risc.png" alt="Escudo Universidad" height="60">
+      <h1 class="header-title">SITI-RISC: Sistema de Transferencia de Información de Riesgos ambientales</h1>
+      <img src="imagenes/logo magar.jpg" alt="Logo Magíster" height="60">
+    </div>
+  </header>
+  <main>
+    <section class="info-box">
+      <h2>¿Qué es SITI-RISC?</h2>
+      <p>Plataforma que informa sobre la exposición de bienes raíces a Riesgos ambientales con datos claros, útiles y validados por los organismos técnicos del estado de Chile.</p>
+    </section>
+    <div class="panels">
+      <div class="panel">
+        <img src="imagenes/visor sig.png" alt="Visor SIG">
+        <h3>Visor SIG</h3>
+        <p>Interactúa con mapas dinámicos que muestran los riesgos ambientales a los cuales está expuesto el bien raiz.</p>
+      </div>
+      <div class="panel">
+        <img src="imagenes/consulta rapida.webp" alt="Consulta Rápida">
+        <h3>Consulta Rápida</h3>
+        <p>Busca por rol predial, o utilizando la nevegación mediante el mapa y obtén datos inmediatos de exposición.</p>
+      </div>
+      <div class="panel">
+        <img src="imagenes/confianza.webp" alt="Datos Confiables">
+        <h3>Datos Confiables</h3>
+        <p>Información validada por organismos técnicos nacionales tales como: Senapred, Conaf, Shoa, Servicio de Impuestos internos, Ministerio de vivienda y urbanismo.</p>
+      </div>
+    </div>
+    <section class="services-panel">
+      <h3>Servicios</h3>
+      <a class="btn" href="https://larrs-udec.maps.arcgis.com/apps/instant/lookup/index.html?appid=e64590208db745e981f7378f09f14b9d" target="_blank" rel="noopener">Visor SIG</a>
+      <a class="btn" href="divulgacion_riesgos_rol_final.html">Emitir Certificado</a>
+    </section>
+    <div class="glossary-sidebar">
+      <div class="glossary-item" data-term="amenaza">
+        <img src="imagenes/amenaza.png" alt="Amenaza">
+        <div class="tooltip">Amenaza: Es un proceso o fenómeno natural o antrópico que puede ocasionar pérdida de vidas, accidentes y otros impactos en salud, como también en pérdidas de propiedad, infraestructura, medios de subsistencia o provisión de servicios
+            .</div>
+      </div>
+      <div class="glossary-item" data-term="vulnerabilidad">
+        <img src="imagenes/vulnerabilidad.png" alt="Vulnerabilidad">
+        <div class="tooltip">Vulnerabilidad: Condiciones de fragilidad asociadas a factores físicos, sociales, institucionales, económicos o ambientales que aumentan la susceptibilidad de una persona, una comunidad, los bienes, infraestructuras o servicios, afectos a amenazas 
+            .</div>
+      </div>
+      <div class="glossary-item" data-term="riesgo">
+        <img src="imagenes/riesgo.webp" alt="Riesgo de Desastres">
+        <div class="tooltip">Riesgo: Grado de pérdida previsto debido a
+            un fenómeno natural determinado y en función tanto del peligro natural como de
+            la vulnerabilidad</div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    2025 SITI-RISC | Magíster en Gestión y Arquitectura Resiliente para la Reducción del Riesgo de Desastres | Universidad de Concepción
+  </footer>
+  <script>
+    document.querySelectorAll('.glossary-item').forEach(item => {
+      const tooltip = item.querySelector('.tooltip');
+      item.addEventListener('mouseover', () => tooltip.classList.add('visible'));
+      item.addEventListener('mouseout', () => tooltip.classList.remove('visible'));
+    });
+  </script>
+</body>
+</html>
